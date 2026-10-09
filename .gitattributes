@@ -1,0 +1,19 @@
+# Shell scripts must keep LF endings or they fail to execute on Linux/macOS.
+*.sh text eol=lf
+
+# Windows batch files keep CRLF, which cmd.exe expects.
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+# Source and docs normalize to LF in the repository; Git converts on checkout
+# according to the user's core.autocrlf setting.
+*.ts   text
+*.js   text
+*.json text
+*.md   text
+*.html text
+
+# Binary assets are never line-ending converted.
+*.png binary
+*.jpg binary
+*.ico binary

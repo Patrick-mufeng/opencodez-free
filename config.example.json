@@ -1,0 +1,60 @@
+{
+  // opencodez-free configuration. Every field is optional; delete what you do
+  // not need. Command-line flags and OPENCODEZ_* environment variables override
+  // whatever is set here.
+
+  // Where the server listens. Keep it on loopback unless you have a reason not
+  // to — the free lane is usable by anyone who can reach this port.
+  "host": "127.0.0.1",
+  "port": 8787,
+
+  // Require a key from Agents calling /v1. ON by default: every program on this
+  // machine can reach the port, so an open API would let anything spend the
+  // upstream free lane. The key is generated into ~/.opencodez-free/agent-key.txt.
+  "auth": true,
+
+  // Require a key to open the management panel. OFF by default: the panel binds
+  // to loopback and shows only your own service, so a password there is mostly
+  // friction. Turn it on for a shared machine or when exposing the panel.
+  // The key lives in ~/.opencodez-free/api-key.txt once enabled.
+  "panelAuth": false,
+
+  // Leave both empty to use the generated keys. Set a value to pin your own —
+  // it is then never auto-rotated. Neither is ever written to this file by the
+  // panel; they live in their own files so this one stays shareable.
+  "agentKey": "",
+  "apiKey": "",
+
+  // Serve the management panel at /panel/. The panel page itself loads without
+  // a key; its API calls require one, like every other endpoint.
+  "panel": true,
+
+  // How often the live model roster is refreshed, in seconds (minimum 30).
+  // models.dev pricing metadata refreshes once a day regardless.
+  "refreshSeconds": 300,
+
+  // Return the models' thinking text. Set to false for a cleaner output.
+  "includeReasoning": true,
+
+  // Advertise every model the upstream roster carries, instead of only the
+  // ones that are free by metadata. Off by default.
+  "exposeAllModels": false,
+
+  // Model used when a request omits the "model" field.
+  // "defaultModel": "mimo-v2.6-flash-free",
+
+  // Stream-liveness watchdogs, in milliseconds. Raise firstEventMs if your
+  // connection is slow to establish, or bodyIdleMs if a model pauses a lot
+  // mid-answer.
+  "firstEventMs": 60000,
+  "bodyIdleMs": 120000,
+  "responsesBodyIdleMs": 300000,
+
+  // Usage accounting. Per-day detail beyond statsKeepDays is dropped, but the
+  // lifetime totals shown at the top of the panel are never reduced.
+  "statsKeepDays": 30,
+  // "statsPath": "C:\\Users\\you\\.opencodez-free\\stats.json",
+
+  // Log verbosity: silent | error | warn | info | debug
+  "logLevel": "info"
+}

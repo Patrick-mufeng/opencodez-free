@@ -1,0 +1,5 @@
+node_modules/
+*.log
+
+# Local runtime state (models.dev cache, server descriptor, probe scratch).
+.probe/
